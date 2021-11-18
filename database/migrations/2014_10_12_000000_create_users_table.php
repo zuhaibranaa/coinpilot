@@ -17,7 +17,14 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('image')->default('assets/images/faces/face8.jpg');
+            $table->boolean('is_super_admin')->default(false);
+            $table->boolean('is_admin')->default(false);
+            $table->boolean('can_change_nfts')->default(false);
+            $table->boolean('can_change_coins')->default(false);
+            $table->boolean('can_change_exchanges')->default(false);
+            $table->boolean('can_manage_bookings')->default(false);
+            $table->boolean('can_manage_slots')->default(false);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
