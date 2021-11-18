@@ -1,7 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\api\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\api\BookingController;
+use App\Http\Controllers\api\DappController;
+use App\Http\Controllers\api\LikeController;
+use App\Http\Controllers\api\SlotController;
+use App\Http\Controllers\api\WatchlistController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +20,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::post('register', [AuthController::class,'Register']);
+Route::post('login', [AuthController::class,'login']);
+Route::post('logout', [AuthController::class,'logout']);
+Route::resource('booking', BookingController::class);
+Route::resource('dapp', DappController::class);
+Route::resource('like', LikeController::class);
+Route::resource('slot', SlotController::class);
+Route::resource('watchlist', WatchlistController::class);
